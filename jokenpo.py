@@ -22,7 +22,7 @@ reset = ""
 
 
 
-                    # Primeiro criarei funcoes para cada menu ( com bastante viadagens em ascii art )
+                    # Primeiro criarei funcoes para cada menu
 def menuInicio():
     print("""
     _______                                   #                                                               #
