@@ -237,7 +237,7 @@ while True:
         # computador x computador
         elif modoJogo == 3:
             while modoJogo == 3:
-                pvc()
+                cvc()
                 print(f"""|-------------------------------------------------|
                 |   Computador: ({p1Score})/Computador ({c1Score})|
                 |                                                 |
