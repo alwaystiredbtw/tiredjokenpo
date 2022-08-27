@@ -6,8 +6,8 @@ from operator import mod
 from random import randint
 
 # variaveis e ARMAZENAMENTO DE DADOS (jogadas e score)
-jogadaP1 = ()
-jogadaP2 = ()
+jogadaP1 = 0
+jogadaP2 = 0
 jogadaC1 = (randint(1,3))
 jogadaC2 = (randint(1,3))
 
@@ -15,14 +15,14 @@ p1Score = 0
 p2Score = 0
 c1Score = 0
 c2Score = 0
-modoJogo = ()
+modoJogo = 0
 continuar = ""
 sair = False
 reset = ""
 
 
 
-                    # Primeiro criarei funcoes para cada menu
+                    # Primeiro criarei funcoes para cada menu ( com bastante viadagens em ascii art )
 def menuInicio():
     print("""
     _______                                   #                                                               #
@@ -76,6 +76,9 @@ def menuScore():
       (____)
 ---.__(___)                                   #                                                                       #
 """)
+
+
+
 #    FECHAR O LOOP GERAL PRA REINICIAR O JOGO  #
     reset = input(":")
     if reset == "reset":
@@ -93,46 +96,48 @@ while True:
 
                     # criacao de funcao para cada modo de jogo( achei mais organizado assim so pra fechar certinho inves de ficar repetindo cada situacao )
     def pvp():
-            print("O jogador 1 deve escolher sua jogada!")
+            print("O jogador I deve escolher sua jogada!")
             jogadaP1 = int(input("Jogada:"))
-            print("O jogador 2 deve escolher sua jogada!")
-            jogadaP2 = int(input("Jogada:"))   
-            global p1Score    
+            print("O jogador II deve escolher sua jogada!")
+            jogadaP2 = int(input("Jogada:")) 
             global p2Score
+            global p1Score
             if jogadaP1 == 1:
                 if jogadaP2 == 3:
-                    print("Jogador 1 venceu a rodada!")
+                    print("Jogador I venceu a rodada!")
                     p1Score += 1
-                    
                 elif jogadaP2 == 2:
-                    print("Jogador 2 venceu a rodada!")
+                    print("Jogador II venceu a rodada!")
                     p2Score +=1
                 else:
                     print("Empate")
             if jogadaP1 == 2:
                 if jogadaP2 == 1:
-                    print("Jogador 1 venceu a rodada!")
+                    print("Jogador I venceu a rodada!")
                     p1Score += 1
                 elif jogadaP2 == 3:
-                    print("Jogador 2 venceu a rodada!")
+                    print("Jogador II venceu a rodada!")
                     p2Score +=1
                 else:
                     print("Empate")           
             if jogadaP1 == 3:
                 if jogadaP2 == 2:
-                    print("Jogador 1 venceu a rodada!")
+                    print("Jogador I venceu a rodada!")
                 elif jogadaP2 == 1:
-                    print("Jogador 2 venceu a rodada!")
+                    print("Jogador II venceu a rodada!")
                     p2Score +=1
                 else:
                     print("Empate")
     def pvc():
-            print("O jogador 1 deve escolher sua jogada!")
+            print("O jogador I deve escolher sua jogada!")
             jogadaP1 = (input("Jogada:"))
-            
+            print(f"O computador jogou {jogadaC1} ")
+            global p1Score
+            global c1Score
+            global c2Score
             if jogadaP1 == 1:
                 if jogadaC1 == 3:
-                    print("Jogador 1 venceu a rodada!")
+                    print("Jogador I venceu a rodada!")
                     p1Score += 1
                 elif jogadaC1 == 2:
                     print("Computador venceu a rodada!")
@@ -141,7 +146,7 @@ while True:
                     print("Empate")
             if jogadaP1 == 2:
                 if jogadaC1 == 1:
-                    print("Jogador 1 venceu a rodada!")
+                    print("Jogador I venceu a rodada!")
                     p1Score += 1
                 elif jogadaC1 == 3:
                     print("Computador venceu a rodada!")
@@ -150,7 +155,7 @@ while True:
                     print("Empate")           
             if jogadaP1 == 3:
                 if jogadaC1 == 2:
-                    print("Jogador 1 venceu a rodada!")
+                    print("Jogador I venceu a rodada!")
                     p1Score += 1
                 elif jogadaC1 == 1:
                     print("Computador venceu a rodada!")
@@ -158,30 +163,34 @@ while True:
                 else:
                     print("Empate")
     def cvc():
+            global c1Score
+            global c2Score
+            print(f"O computador I jogou {jogadaC1}")
+            print(f"O computador II jogou {jogadaC2}")
             if jogadaC1 == 1:
                 if jogadaC2 == 3:
-                    print("Computador 1 venceu a rodada!")
+                    print("Computador I venceu a rodada!")
                     c1Score += 1
                 elif jogadaC1 == 2:
-                    print("Computador 2 venceu a rodada!")
+                    print("Computador II venceu a rodada!")
                     c2Score +=1
                 else:
                     print("Empate")
             if jogadaC1 == 2:
                 if jogadaC2 == 1:
-                    print("Computador 1 venceu a rodada!")
+                    print("Computador I venceu a rodada!")
                     c1Score += 1
                 elif jogadaC1 == 3:
-                    print("Computador 2 venceu a rodada!")
+                    print("Computador I venceu a rodada!")
                     c2Score +=1
                 else:
                     print("Empate")           
             if jogadaC1 == 3:
                 if jogadaC2 == 2:
-                    print("Jogador 1 venceu a rodada!")
+                    print("Computador I venceu a rodada!")
                     c1Score += 1
                 elif jogadaC1 == 1:
-                    print("Jogador 2 venceu a rodada!")
+                    print("Computador II venceu a rodada!")
                     c2Score +=1
                 else:
                     print("Empate") 
@@ -189,68 +198,37 @@ while True:
     # sera quebrado apenas quando o jogador digitar o comando SAIR utilizando o False
     # rodando o jogo, quebrando ou continuando o loop \/
     while sair == False:
-        #player x player
-        if modoJogo == 1:
-            while modoJogo == 1:
+        jogador1Nome = "Jogador I"
+        jogador2Nome = ""
+        match modoJogo:
+            case 1:
                 pvp()
-                print(f"""                |-----------------------------------------------|
-                |   Jogador 1: ({p1Score})/Jogador 2 ({p2Score})|
+                jogador2Nome = "Jogador II"
+                score1 = p1Score
+                score2 = p2Score
+            case 2:
+                pvc()
+                jogador2Nome = "Computador I"
+                score1 = p1Score
+                score2 = c1Score
+            case 3:
+                cvc()
+                jogador1Nome = "Computador I"
+                jogador2Nome = "Computador II"
+                score1 = c1Score
+                score2 = c2Score
+        print(f"""                |-----------------------------------------------|
+                |   {jogador1Nome}: ({score1})/{jogador2Nome} ({score2})               |
                 | Para jogar novamente digite CONTINUAR         |
                 | Para sair digite SAIR                         |
                 |                                               |
                 |-----------------------------------------------|""")
-                continuar = input(":").upper()
-                if continuar == "CONTINUAR":
-                    continue
-                else: 
-                    sair = True
-                    break
-    
-    
-    
-    
-    
-    
-    
-        # player x computador
-        elif modoJogo == 2:
-            while modoJogo == 2:
-                pvc()
-                print(f"""|-----------------------------------------------|
-                |   Jogador 1: ({p1Score})/Computador ({c1Score})|
-                | Para jogar novamente digite CONTINUAR         |
-                | Para sair aperte SAIR                         |
-                |                                               |
-                |-----------------------------------------------|""")
-                continuar = input(":").upper()
-                if continuar == "CONTINUAR":
-                    continue
-                else: 
-                    sair = True
-                    break
-        
-        
-        
-        
-        
-        
-        # computador x computador
-        elif modoJogo == 3:
-            while modoJogo == 3:
-                cvc()
-                print(f"""|-------------------------------------------------|
-                |   Computador: ({p1Score})/Computador ({c1Score})|
-                |                                                 |
-                | Para jogar novamente digite CONTINUAR           |
-                | Para sair digite SAIR                           |
-                |-------------------------------------------------|""")
-                continuar = input(":").upper()
-                if continuar == "CONTINUAR":
-                    continue
-                else: 
-                    sair = True
-                    break
 
+        continuar = input(":").upper()
+        if continuar == "CONTINUAR":
+            continue
+        else: 
+            break
     menuScore()
     
     
