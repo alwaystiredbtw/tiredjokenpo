@@ -2,7 +2,6 @@
 
 # aaaaaaaaaaaa meu teclado nao tem acento nem cedilha !! 
 
-from operator import mod
 from random import randint
 
 # variaveis e ARMAZENAMENTO DE DADOS (jogadas e score)
@@ -19,6 +18,13 @@ modoJogo = 0
 continuar = ""
 sair = False
 reset = ""
+
+emoji = ""
+emoji1 = "🤛"
+emoji2 = "✋"
+emoji3 = "✌"
+
+
 
 
 
@@ -42,7 +48,7 @@ def menuInicio():
 """)
     print("""
     _______                                          |----------------------------------------------|
----'   ____)____                                     | Pedra = 1      Papel = 2    Tesoura = 3      |
+---'   ____)____                                     | Pedra = 1 🤛  Papel = 2 ✋ Tesoura = 3  ✌    |
           ______)                                    |----------------------------------------------|
        __________)
       (____)
@@ -134,7 +140,6 @@ while True:
             print(f"O computador jogou {jogadaC1} ")
             global p1Score
             global c1Score
-            global c2Score
             if jogadaP1 == 1:
                 if jogadaC1 == 3:
                     print("Jogador I venceu a rodada!")
@@ -217,12 +222,12 @@ while True:
                 jogador2Nome = "Computador II"
                 score1 = c1Score
                 score2 = c2Score
-        print(f"""                |-----------------------------------------------|
-                |   {jogador1Nome}: ({score1})/{jogador2Nome} ({score2})               |
-                | Para jogar novamente digite CONTINUAR         |
-                | Para sair digite SAIR                         |
-                |                                               |
-                |-----------------------------------------------|""")
+        print(f"""                |-------------------------------------------------------------------------|
+                |   {jogador1Nome}: ({score1})/{jogador2Nome} ({score2})                  
+                | Para jogar novamente digite CONTINUAR                                   
+                | Para sair digite SAIR                                                   
+                |                                                                         
+                |-------------------------------------------------------------------------|""")
 
         continuar = input(":").upper()
         if continuar == "CONTINUAR":
