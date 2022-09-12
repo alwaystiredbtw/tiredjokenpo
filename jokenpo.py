@@ -1,6 +1,5 @@
 #    JOKENPO DO MOURA   # 
-
-# aaaaaaaaaaaa meu teclado nao tem acento nem cedilha !! 
+ 
 
 from random import randint
 
@@ -10,7 +9,6 @@ jogadaP2 = 0
 jogadaC1 = 0
 jogadaC2 = 0
 
-vencedor = ""
 p1Score = 0
 p2Score = 0
 c1Score = 0
@@ -29,7 +27,7 @@ emoji3 = "✌"
 
 
 
-                    # Primeiro criarei funcoes para cada menu ( com bastante viadagens em ascii art )
+                    # Primeiro criarei funcoes para cada menu 
 def menuInicio():
     print("""
     _______                                   #                                                               #
@@ -61,10 +59,10 @@ def menuInicio():
 def menuScore():
     print(f"""
     _______                                                     |-------------------------------|
----'   ____)                                                    |Jogador 1: {p1Score} pontos!           |
-      (_____)                                                   |Jogador 2: {p2Score} pontos!           |
-      (_____)                                                   |Computador 1: {c1Score} pontos!        |
-      (____)                                                    |Computador 2: {c2Score} pontos!        |
+---'   ____)                                                    |Jogador I: {p1Score} pontos!           |
+      (_____)                                                   |Jogador II: {p2Score} pontos!          |
+      (_____)                                                   |Computador I: {c1Score} pontos!        |
+      (____)                                                    |Computador II: {c2Score} pontos!       |
 ---.__(___)                                                     |-------------------------------|
 """)                                    
     print("""
@@ -78,8 +76,8 @@ def menuScore():
     print("""
     _______                                   #                                                                       #
 ---'   ____)____                                                       Obrigado por jogar !                          
-          ______)                               Feito por: Eduardo Moura para a disciplina de Raciocinio Algoritmico
-       __________)                                              ig/tt/git: @alwaystiredbtw
+          ______)                               Feito por: Eduardo Moura, Andre Akim, Vittorio, Gilamr Denck
+       __________)                                    para a disciplina de Raciocinio Algoritmico           
       (____)
 ---.__(___)                                   #                                                                       #
 """)
@@ -87,7 +85,7 @@ def menuScore():
 
 
 #    FECHAR O LOOP GERAL PRA REINICIAR O JOGO  #
-    reset = input(":")
+    reset = input(":").lower().strip()
     if reset == "reset":
         return False
 
@@ -105,8 +103,14 @@ while True:
     def pvp():
             print("O jogador I deve escolher sua jogada!")
             jogadaP1 = int(input("Jogada:"))
+            while jogadaP1 != 1 and jogadaP1 != 2 and jogadaP1 != 3:
+                print ("Jogada invalida! Digite novamente")
+                jogadaP1 = int(input("Jogada:"))
             print("O jogador II deve escolher sua jogada!")
-            jogadaP2 = int(input("Jogada:")) 
+            jogadaP2 = int(input("Jogada:"))
+            while jogadaP2 != 1 and jogadaP2 != 2 and jogadaP2 != 3:
+                print ("Jogada invalida! Digite novamente")
+                jogadaP2 = int(input("Jogada:"))
             global p2Score
             global p1Score
             if jogadaP1 == 1:
@@ -138,37 +142,43 @@ while True:
     def pvc():
             print("O jogador I deve escolher sua jogada!")
             jogadaP1 = (input("Jogada:"))
+            while jogadaP1 != 1 and jogadaP1 != 2 and jogadaP1 != 3:
+                print ("Jogada invalida! Digite novamente")
+                jogadaP1 = int(input("Jogada:"))
             jogadaC1 = (randint(1,3))
             print(f"O computador jogou {jogadaC1} ")
             global p1Score
             global c1Score
-            if jogadaP1 == 1:
-                if jogadaC1 == 3:
+            if jogadaP1 == 1 and jogadaC1 == 3:
                     print("Jogador I venceu a rodada!")
-                    p1Score += 1
-                elif jogadaC1 == 2:
-                    print("Computador venceu a rodada!")
-                    c1Score +=1
-                else:
+                    p1Score +=1
+                    return p1Score
+            elif jogadaP1 == 1 and jogadaC1 == 2:
+                    print("Computador I venceu a rodada!")
+                    c1Score += 1
+                    return c1Score
+            elif jogadaP1 == jogadaC1:
                     print("Empate")
-            if jogadaP1 == 2:
-                if jogadaC1 == 1:
+            elif jogadaP1 == 2 and jogadaC1 == 1:
                     print("Jogador I venceu a rodada!")
-                    p1Score += 1
-                elif jogadaC1 == 3:
-                    print("Computador venceu a rodada!")
+                    p1Score +=1
+                    return p1Score
+            elif jogadaP1 == 2 and jogadaC1 == 3:
+                    print("Jogador I venceu a rodada!")
                     c1Score +=1
-                else:
+                    return c1Score
+            elif jogadaP1 == jogadaC1:
                     print("Empate")           
-            if jogadaP1 == 3:
-                if jogadaC1 == 2:
+            elif jogadaP1 == 3 and jogadaC1 == 2:
                     print("Jogador I venceu a rodada!")
-                    p1Score += 1
-                elif jogadaC1 == 1:
-                    print("Computador venceu a rodada!")
+                    p1Score +=1
+                    return p1Score
+            elif jogadaP1 == 3 and jogadaC1 == 1:
+                    print("Computador I venceu a rodada!")
                     c1Score +=1
-                else:
-                    print("Empate")
+                    return c1Score
+            elif jogadaP1 == jogadaC1:
+                    print("Empate") 
     def cvc():
             global c1Score
             global c2Score
@@ -176,32 +186,35 @@ while True:
             jogadaC2 = (randint(1,3))
             print(f"O computador I jogou {jogadaC1}")
             print(f"O computador II jogou {jogadaC2}")
-            if jogadaC1 == 1:
-                if jogadaC2 == 3:
+            if jogadaC1 == 1 and jogadaC2 == 3:
                     print("Computador I venceu a rodada!")
                     c1Score += 1
-                elif jogadaC1 == 2:
+                    return c1Score
+            elif jogadaC1 == 1 and jogadaC2 == 2:
                     print("Computador II venceu a rodada!")
-                    c2Score +=1
-                else:
+                    c2Score += 1
+                    return c2Score
+            elif jogadaC1 == jogadaC2:
                     print("Empate")
-            if jogadaC1 == 2:
-                if jogadaC2 == 1:
+            elif jogadaC1 == 2 and jogadaC2 == 1:
                     print("Computador I venceu a rodada!")
                     c1Score += 1
-                elif jogadaC1 == 3:
+                    return c1Score
+            elif jogadaC1 == 2 and jogadaC1 == 3:
                     print("Computador I venceu a rodada!")
                     c2Score +=1
-                else:
+                    return c2Score
+            elif jogadaC1 == jogadaC2:
                     print("Empate")           
-            if jogadaC1 == 3:
-                if jogadaC2 == 2:
+            elif jogadaC1 == 3 and jogadaC2 == 2:
                     print("Computador I venceu a rodada!")
                     c1Score += 1
-                elif jogadaC1 == 1:
+                    return c1Score
+            elif jogadaC1 == 3 and jogadaC2 == 1:
                     print("Computador II venceu a rodada!")
                     c2Score +=1
-                else:
+                    return c2Score
+            elif jogadaC1 == jogadaC2:
                     print("Empate") 
     # apos escolher o modo de jogo, criarei cada situacao utilizando um loop infinito com while que +
     # sera quebrado apenas quando o jogador digitar o comando SAIR utilizando o False
@@ -233,7 +246,7 @@ while True:
                 |                                                                         
                 |-------------------------------------------------------------------------|""")
 
-        continuar = input(":").upper()
+        continuar = input(":").upper().strip()
         if continuar == "CONTINUAR":
             continue
         else: 
