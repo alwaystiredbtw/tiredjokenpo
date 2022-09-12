@@ -7,9 +7,10 @@ from random import randint
 # variaveis e ARMAZENAMENTO DE DADOS (jogadas e score)
 jogadaP1 = 0
 jogadaP2 = 0
-jogadaC1 = (randint(1,3))
-jogadaC2 = (randint(1,3))
+jogadaC1 = 0
+jogadaC2 = 0
 
+vencedor = ""
 p1Score = 0
 p2Score = 0
 c1Score = 0
@@ -137,6 +138,7 @@ while True:
     def pvc():
             print("O jogador I deve escolher sua jogada!")
             jogadaP1 = (input("Jogada:"))
+            jogadaC1 = (randint(1,3))
             print(f"O computador jogou {jogadaC1} ")
             global p1Score
             global c1Score
@@ -170,6 +172,8 @@ while True:
     def cvc():
             global c1Score
             global c2Score
+            jogadaC1 = (randint(1,3))
+            jogadaC2 = (randint(1,3))
             print(f"O computador I jogou {jogadaC1}")
             print(f"O computador II jogou {jogadaC2}")
             if jogadaC1 == 1:
@@ -243,14 +247,3 @@ while True:
 
 
 
-# Receita bolo de cenoura
-# Bata os ovos com a cenoura, o açúcar, o leite (ou suco de laranja) e o óleo no liquidificador por cerca de 4 minutos ou até obter uma mistura uniforme.
-#Despeje sobre a farinha misturada com o fermento e mexa até incorporar completamente.
-#Disponha em fôrma retangular (22 x 32 cm) untada e enfarinhada.
-#Asse em forno médio preaquecido (200 ºC) por cerca de 40 minutos ou até dourar.
-#Depois de morno, regue com a calda de chocolate, polvilhe granulado e sirva em pedaços.
-#Cobertura
-#Dilua o amido no leite em uma panela.
-#Junte o açúcar e o chocolate em pó e leve ao fogo médio, mexendo sempre, até encorpar.
-#Variação
-#Se preferir, substitua a cobertura por 150 g de raspas de chocolate ao leite ou meio amargo. Distribua sobre o bolo quente e espalhe com as costas de uma colher.
