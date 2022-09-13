@@ -18,10 +18,12 @@ continuar = ""
 sair = False
 reset = ""
 
+pedra = "Pedra 🤛"
+papel = "Papel ✋"
+tesoura = "Tesoura ✌"
+
 emoji = ""
-emoji1 = "🤛"
-emoji2 = "✋"
-emoji3 = "✌"
+emoji2 = ""
 
 
 
@@ -111,6 +113,21 @@ while True:
             while jogadaP2 != 1 and jogadaP2 != 2 and jogadaP2 != 3:
                 print ("Jogada invalida! Digite novamente")
                 jogadaP2 = int(input("Jogada:"))
+
+            if jogadaP1 == 1:
+                emoji = pedra
+            if jogadaP1 == 2:
+                emoji = papel
+            if jogadaP1 == 3:
+                emoji = tesoura
+            if jogadaP2 == 1:
+                emoji2 = pedra
+            if jogadaP2 == 2:
+                emoji2 = papel
+            if jogadaP2 == 3:
+                emoji2 = tesoura
+            print(f"O jogador I jogou {emoji} \nO jogador II jogou {emoji2}")
+
             global p2Score
             global p1Score
             if jogadaP1 == 1:
@@ -134,6 +151,7 @@ while True:
             if jogadaP1 == 3:
                 if jogadaP2 == 2:
                     print("Jogador I venceu a rodada!")
+                    p1Score += 1
                 elif jogadaP2 == 1:
                     print("Jogador II venceu a rodada!")
                     p2Score +=1
@@ -141,14 +159,31 @@ while True:
                     print("Empate")
     def pvc():
             print("O jogador I deve escolher sua jogada!")
-            jogadaP1 = (input("Jogada:"))
+            jogadaP1 = int(input("Jogada:"))
             while jogadaP1 != 1 and jogadaP1 != 2 and jogadaP1 != 3:
                 print ("Jogada invalida! Digite novamente")
                 jogadaP1 = int(input("Jogada:"))
             jogadaC1 = (randint(1,3))
-            print(f"O computador jogou {jogadaC1} ")
+
+
+            if jogadaP1 == 1:
+                emoji = pedra
+            if jogadaP1 == 2:
+                emoji = papel
+            if jogadaP1 == 3:
+                emoji2 = tesoura
+            if jogadaC1 == 1:
+                emoji2 = pedra
+            if jogadaC1 == 2:
+                emoji2 = papel
+            if jogadaC1 == 3:
+                emoji2 = tesoura
+            print(f"O jogador I jogou {emoji} e o computador jogou {emoji2}")
+            
             global p1Score
             global c1Score
+            
+            
             if jogadaP1 == 1 and jogadaC1 == 3:
                     print("Jogador I venceu a rodada!")
                     p1Score +=1
@@ -184,8 +219,23 @@ while True:
             global c2Score
             jogadaC1 = (randint(1,3))
             jogadaC2 = (randint(1,3))
-            print(f"O computador I jogou {jogadaC1}")
-            print(f"O computador II jogou {jogadaC2}")
+
+            if jogadaC1 == 1:
+                emoji = pedra
+            if jogadaC1 == 2:
+                emoji = papel
+            if jogadaC1 == 3:
+                emoji = tesoura
+            if jogadaC2 == 1:
+                emoji2 = pedra
+            if jogadaC2 == 2:
+                emoji2 = papel
+            if jogadaC2 == 3:
+                emoji2 = tesoura
+
+            print(f"O computador I jogou {emoji} e o computador II jogou {emoji2}")
+            
+            
             if jogadaC1 == 1 and jogadaC2 == 3:
                     print("Computador I venceu a rodada!")
                     c1Score += 1
@@ -194,8 +244,6 @@ while True:
                     print("Computador II venceu a rodada!")
                     c2Score += 1
                     return c2Score
-            elif jogadaC1 == jogadaC2:
-                    print("Empate")
             elif jogadaC1 == 2 and jogadaC2 == 1:
                     print("Computador I venceu a rodada!")
                     c1Score += 1
@@ -203,9 +251,7 @@ while True:
             elif jogadaC1 == 2 and jogadaC1 == 3:
                     print("Computador I venceu a rodada!")
                     c2Score +=1
-                    return c2Score
-            elif jogadaC1 == jogadaC2:
-                    print("Empate")           
+                    return c2Score           
             elif jogadaC1 == 3 and jogadaC2 == 2:
                     print("Computador I venceu a rodada!")
                     c1Score += 1
