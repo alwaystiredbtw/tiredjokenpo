@@ -248,8 +248,8 @@ while True:
                     print("Computador I venceu a rodada!")
                     c1Score += 1
                     return c1Score
-            elif jogadaC1 == 2 and jogadaC1 == 3:
-                    print("Computador I venceu a rodada!")
+            elif jogadaC1 == 2 and jogadaC2 == 3:
+                    print("Computador II venceu a rodada!")
                     c2Score +=1
                     return c2Score           
             elif jogadaC1 == 3 and jogadaC2 == 2:
@@ -287,13 +287,13 @@ while True:
                 score2 = c2Score
         print(f"""                |-------------------------------------------------------------------------|
                 |   {jogador1Nome}: ({score1})/{jogador2Nome} ({score2})                  
-                | Para jogar novamente digite CONTINUAR                                   
+                | Para jogar novamente pressione ENTER                                 
                 | Para sair digite SAIR                                                   
                 |                                                                         
                 |-------------------------------------------------------------------------|""")
 
-        continuar = input(":").upper().strip()
-        if continuar == "CONTINUAR":
+        continuar = str(input(":")).upper().strip()
+        if continuar == "":
             continue
         else: 
             break
